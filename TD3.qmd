@@ -110,15 +110,32 @@ trouver_trajet_max(df_velo)
 ```
 Le 10 févirer 2025, à la boucle 747 - Chemin de halage Tortière vers Nord, c'est le jour où l'on a compté le plus de passages.
 
+
 # Question 8 : Implémentez une fonction calcul_distribution_semaine(). Cette fonction calculera la somme des trajets référencés pour chaque jour de la semaine. Appliquez aux quatre data.frame. Pouvez-vous prédire certains résultats ?
+```{r}
+library(dplyr)
+calcul_distribution_semaine <- function(df) {
+  nb_trajets <- df |> 
+    group_by(Jour.de.la.semaine) |> 
+    summarise(nb_trajets = sum(Total, na.rm=TRUE))
+  
+  return(nb_trajets)
+}
+```
+
+```{r}
+calcul_distribution_semaine(df_b_673)
+calcul_distribution_semaine(df_b_788)
+calcul_distribution_semaine(df_d_0917)
+calcul_distribution_semaine(df_d_0928)
+```
 
 
-9. Implémentez une fonction plot_distribution_semaine(). Cette fonction prendra en entrée
-un data.frame respectant le même schéma que notre jeu de données df_velo. Elle comptera,
-pour chaque jour de la semaine, le nombre de trajets détectés. Elle utilisera pour cela
-les fonctions filtre_anomalie() et calcul_distribution_semaine(). Nous utiliserons un
-diagramme en colonne pour représenter ces informations. Appliquez aux quatre data.frame.
-10. Améliorer la fonction trouver_trajet_max() pour qu’elle filtre les anomalies et qu’elle
+
+# Question 9 : Implémentez une fonction plot_distribution_semaine(). Cette fonction prendra en entrée un data.frame respectant le même schéma que notre jeu de données df_velo. Elle comptera, pour chaque jour de la semaine, le nombre de trajets détectés. Elle utilisera pour cela les fonctions filtre_anomalie() et calcul_distribution_semaine(). Nous utiliserons un diagramme en colonne pour représenter ces informations. Appliquez aux quatre data.frame.
+
+
+# Question 10. Améliorer la fonction trouver_trajet_max() pour qu’elle filtre les anomalies et qu’elle
 retourne, en plus des éléments précédents :
 • La moyenne par jour des passages sur cette boucle
 • La moyenne par boucle des passages pour cette date

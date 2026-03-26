@@ -61,13 +61,25 @@ compter_nombre_trajets(df_d_0928)
 
 # Question 5 : Implémentez une fonction compter_nombre_boucle(). Cette fonction comptera le nombre de boucles dans un data.frame. Appliquez également sur les quatre data.frame. Pouviez-vous prédire certains résultats ?
 
+```{r}
+compter_nombre_boucle <- function(df) {
+  nb_boucles <- length(unique(df$Numéro.de.boucle))
+  return(nb_boucles)
+}
+```
 
-6. Implémentez une fonction trouver_trajet_max(). Cette fonction identifiera quel est la paire
-boucle-jour avec le maximum de passages décomptés. Elle retournera un objet contenant :
-• Le nom de la boucle
-• Le jour correspondant au maximum de passage enregistrés
-• Le nombre de passages enregistrés
-Appliquez aux quatre data.frame.
+```{r}
+compter_nombre_boucle(df_b_673)
+compter_nombre_boucle(df_b_788)
+compter_nombre_boucle(df_d_0917)
+compter_nombre_boucle(df_d_0928)
+```
+Oui on pouvait prédite qu'il y avait une seule boucle dans les dataframes où on a précisément sélectionné 1 boucle. 
+
+
+# Question 6 : Implémentez une fonction trouver_trajet_max(). Cette fonction identifiera quel est la paire boucle-jour avec le maximum de passages décomptés. Elle retournera un objet contenant : • Le nom de la boucle • Le jour correspondant au maximum de passage enregistrés • Le nombre de passages enregistrés. Appliquez aux quatre data.frame.
+
+
 7. Appliquer la fonction trouver_trajet_max() au jeu de donnée complet df_velo. Quelle est
 votre analyse ? Proposez une modification de la fonction filtre_anomalie().
 8. Implémentez une fonction calcul_distribution_semaine(). Cette fonction calculera la

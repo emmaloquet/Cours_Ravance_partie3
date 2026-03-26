@@ -131,8 +131,25 @@ calcul_distribution_semaine(df_d_0928)
 ```
 
 
-
 # Question 9 : Implémentez une fonction plot_distribution_semaine(). Cette fonction prendra en entrée un data.frame respectant le même schéma que notre jeu de données df_velo. Elle comptera, pour chaque jour de la semaine, le nombre de trajets détectés. Elle utilisera pour cela les fonctions filtre_anomalie() et calcul_distribution_semaine(). Nous utiliserons un diagramme en colonne pour représenter ces informations. Appliquez aux quatre data.frame.
+```{r}
+plot_distribution_semaine <- function(df){
+  calcul_distribution_semaine(df)
+  graph <- barplot(tapply(df$Total, df$Jour.de.la.semaine, sum),
+                   xlab="Jour de la semaine",
+                   ylab="Nombre de trajets par jour",
+                   col="lightblue")
+  return(graph)
+}
+```
+
+```{r}
+plot_distribution_semaine(df_b_673)
+plot_distribution_semaine(df_b_788)
+plot_distribution_semaine(df_d_0917)
+plot_distribution_semaine(df_d_0928)
+```
+
 
 
 # Question 10. Améliorer la fonction trouver_trajet_max() pour qu’elle filtre les anomalies et qu’elle

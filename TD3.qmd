@@ -79,9 +79,34 @@ Oui on pouvait prédite qu'il y avait une seule boucle dans les dataframes où o
 
 # Question 6 : Implémentez une fonction trouver_trajet_max(). Cette fonction identifiera quel est la paire boucle-jour avec le maximum de passages décomptés. Elle retournera un objet contenant : • Le nom de la boucle • Le jour correspondant au maximum de passage enregistrés • Le nombre de passages enregistrés. Appliquez aux quatre data.frame.
 
+```{r}
+trouver_trajet_max <- function(df) {
+  indice <- which.max(df$Total)
+  
+  nom <- df$Boucle.de.comptage[indice]
+  jour <- df$Jour[indice]
+  passages <- df$Total[indice]
+  
+  trajet_max <- data.frame(
+    nom = nom,
+    jour = jour,
+    passages = passages)
 
-7. Appliquer la fonction trouver_trajet_max() au jeu de donnée complet df_velo. Quelle est
-votre analyse ? Proposez une modification de la fonction filtre_anomalie().
+  return(trajet_max)
+}
+```
+
+```{r}
+trouver_trajet_max(df_b_673)
+trouver_trajet_max(df_b_788)
+trouver_trajet_max(df_d_0917)
+trouver_trajet_max(df_d_0928)
+```
+
+
+#Question 7 : Appliquer la fonction trouver_trajet_max() au jeu de donnée complet df_velo. Quelle est votre analyse ? Proposez une modification de la fonction filtre_anomalie().
+
+
 8. Implémentez une fonction calcul_distribution_semaine(). Cette fonction calculera la
 somme des trajets référencés pour chaque jour de la semaine. Appliquez aux quatre
 data.frame. Pouvez-vous prédire certains résultats ?

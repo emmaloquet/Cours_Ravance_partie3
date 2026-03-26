@@ -5,4 +5,30 @@ editor: visual
 ---
 # ================================================= TD 3 =========================================
 
-#1. Créez un dossier data/, et copiez le jeu de données à l’intérieur du dossier. Initialisez un script .R ou Quarto à la racine du projet. Créez un premier commit comprenant l’intégralité des modifications, en excluant le fichier csv. Initiez un nouveau projet sur GitHub vide (sans README) que vous appellerez cours_r_partie_3. Dans un terminal, dans le projet RStudio, configurez le serveur distant en utilisant l’expression suivante :  
+# Question 1. Créez un dossier data/, et copiez le jeu de données à l’intérieur du dossier. Initialisez un script .R ou Quarto à la racine du projet. Créez un premier commit comprenant l’intégralité des modifications, en excluant le fichier csv. Initiez un nouveau projet sur GitHub vide (sans README) que vous appellerez cours_r_partie_3. Dans un terminal, dans le projet RStudio, configurez le serveur distant en utilisant l’expression suivante : git remote add origin https://github.com/emmaloquet/Cours_Ravance_partie3.git. Faites un push. Commentez. Dans la suite, nous ferons un commit intitulé question X après la résolution de chaque question, suivi d’un push sur le serveur distant
+
+# Question 2 : Importez le jeu de données téléchargé, et nommez l’objet df_velo. Créez deux data.frame contenant les informations relatives à vos deux boucles favorites, nommés sur le format df_b_numero (e.g df_b_788 pour la boucle de 50 Otages Nord), ainsi que deux data.frames comprenant les informations relatives à vos deux jours favoris, nommés selon le format df_d_date (e.g df_d_0105 pour la boucle du 1er mai). Nous utiliserons ces data.frames pour faire des tests dans la suite.
+
+```{r}
+df_velo <- read.csv("data/vélos.csv", sep=";")
+```
+
+Deux boucles favorites :
+```{r}
+df_b_788 <- df_velo[df_velo$Numéro.de.boucle == 788,]
+df_b_673 <- df_velo[df_velo$Numéro.de.boucle == 673,]
+```
+
+Deux jours favoris :
+```{r}
+df_d_0917 <- df_velo[df_velo$Jour == "2025-09-17",]
+df_d_0928 <- df_velo[df_velo$Jour == "2025-09-28",]
+```
+
+
+# Question 3 : Implémentez une fonction filtre_anomalie(). Cette fonction prendra en entrée un
+data.frame respectant le même schéma que notre jeu de données df_velo. Elle retournera le
+même data.frame sans les lignes contenant des anomalies Forte ou Faible. Appliquez cette
+fonction sur les data.frame définis ci-dessus. Combien de lignes sont filtrées ?
+4. Implémentez une fonction compter_nombre_trajets(). Cette fonction prendra en entrée un
+data.frame respectant le même schéma que notre jeu de données df_velo. Elle comptera 

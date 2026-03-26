@@ -26,9 +26,32 @@ df_d_0928 <- df_velo[df_velo$Jour == "2025-09-28",]
 ```
 
 
-# Question 3 : Implémentez une fonction filtre_anomalie(). Cette fonction prendra en entrée un
-data.frame respectant le même schéma que notre jeu de données df_velo. Elle retournera le
-même data.frame sans les lignes contenant des anomalies Forte ou Faible. Appliquez cette
-fonction sur les data.frame définis ci-dessus. Combien de lignes sont filtrées ?
-4. Implémentez une fonction compter_nombre_trajets(). Cette fonction prendra en entrée un
+# Question 3 : Implémentez une fonction filtre_anomalie(). Cette fonction prendra en entrée un data.frame respectant le même schéma que notre jeu de données df_velo. Elle retournera le même data.frame sans les lignes contenant des anomalies Forte ou Faible. Appliquez cette fonction sur les data.frame définis ci-dessus. Combien de lignes sont filtrées ?
+
+```{r}
+filtre_anomalie <- function(df){
+  df_filtre <- df[!(df$Probabilité.de.présence.d.anomalies == "Forte" |    df$Probabilité.de.présence.d.anomalies == "Faible"),]
+  return(df_filtre)
+}
+```
+
+```{r}
+filtre_anomalie(df_b_673)
+filtre_anomalie(df_b_788)
+filtre_anomalie(df_d_0917)
+filtre_anomalie(df_d_0928)
+```
+
+
+# Question 4 : Implémentez une fonction compter_nombre_trajets(). Cette fonction prendra en entrée un
 data.frame respectant le même schéma que notre jeu de données df_velo. Elle comptera 
+
+
+
+
+
+
+
+
+
+

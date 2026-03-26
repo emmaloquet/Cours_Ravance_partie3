@@ -43,8 +43,46 @@ filtre_anomalie(df_d_0928)
 ```
 
 
-# Question 4 : Implémentez une fonction compter_nombre_trajets(). Cette fonction prendra en entrée un
-data.frame respectant le même schéma que notre jeu de données df_velo. Elle comptera 
+# Question 4 : Implémentez une fonction compter_nombre_trajets(). Cette fonction prendra en entrée un data.frame respectant le même schéma que notre jeu de données df_velo. Elle comptera le nombre total de trajets référencés. Appliquez cette fonction sur les data.frame définis cidessus.
+
+```{r}
+compter_nombre_trajets <- function(df) {
+  nb_trajets <- sum(df$Total)
+  return(nb_trajets)
+}
+```
+
+```{r}
+compter_nombre_trajets(df_b_673)
+compter_nombre_trajets(df_b_788)
+compter_nombre_trajets(df_d_0917)
+compter_nombre_trajets(df_d_0928)
+```
+
+# Question 5 : Implémentez une fonction compter_nombre_boucle(). Cette fonction comptera le nombre de boucles dans un data.frame. Appliquez également sur les quatre data.frame. Pouviez-vous prédire certains résultats ?
+
+
+6. Implémentez une fonction trouver_trajet_max(). Cette fonction identifiera quel est la paire
+boucle-jour avec le maximum de passages décomptés. Elle retournera un objet contenant :
+• Le nom de la boucle
+• Le jour correspondant au maximum de passage enregistrés
+• Le nombre de passages enregistrés
+Appliquez aux quatre data.frame.
+7. Appliquer la fonction trouver_trajet_max() au jeu de donnée complet df_velo. Quelle est
+votre analyse ? Proposez une modification de la fonction filtre_anomalie().
+8. Implémentez une fonction calcul_distribution_semaine(). Cette fonction calculera la
+somme des trajets référencés pour chaque jour de la semaine. Appliquez aux quatre
+data.frame. Pouvez-vous prédire certains résultats ?
+9. Implémentez une fonction plot_distribution_semaine(). Cette fonction prendra en entrée
+un data.frame respectant le même schéma que notre jeu de données df_velo. Elle comptera,
+pour chaque jour de la semaine, le nombre de trajets détectés. Elle utilisera pour cela
+les fonctions filtre_anomalie() et calcul_distribution_semaine(). Nous utiliserons un
+diagramme en colonne pour représenter ces informations. Appliquez aux quatre data.frame.
+10. Améliorer la fonction trouver_trajet_max() pour qu’elle filtre les anomalies et qu’elle
+retourne, en plus des éléments précédents :
+• La moyenne par jour des passages sur cette boucle
+• La moyenne par boucle des passages pour cette date
+Appliquez aux quatre data.frame et au jeu de donnée com
 
 
 
